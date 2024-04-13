@@ -14,7 +14,7 @@ ee = torch.load("/home/stthnguye/neutrex-lite/assets/extracted/ee.pth")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Choose the encoder from the available options (ee or cse)
-for encoder in [ee]:
+for encoder in [cse, ee]:
     # Define the sparse ratio
     for s in [0.1, 0.2]:
         config_list = [{
