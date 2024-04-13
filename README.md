@@ -28,3 +28,8 @@ Check the respective folders for further infos regarding the experiments
     <li><code>finetune</code> - finetuning experiment</li>
     <li><code>pruning</code> - pruning experiment
 </ol>
+
+You can download the experiments reported in the thesis at
+[https://drive.google.com/file/d/16UwtRICCzAuVPqNCBGtwy_ZkIFSiikvr/view?usp=sharing](https://drive.google.com/file/d/16UwtRICCzAuVPqNCBGtwy_ZkIFSiikvr/view?usp=sharing)
+
+After downloading, extract the zip file at the root folder of this repo.
