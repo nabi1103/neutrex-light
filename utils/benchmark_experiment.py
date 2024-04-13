@@ -14,6 +14,7 @@ parser.add_argument('--expname', required = True, help = 'Name of the experiment
 args = parser.parse_args()
 
 expdir = "/home/stthnguye/neutrex-lite/experiment/" + args.expdir
+# Get the encoders from the experiment's folder. If not available, get the original encoder from assets/extracted
 encoders = glob.glob(expdir + "/*.pth")
 custom_cse = None
 custom_ee = None
