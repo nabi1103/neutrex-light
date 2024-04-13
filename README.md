@@ -12,7 +12,9 @@ Requirements to run the code in this repo.
 After installing the NeutrEx repo, put the NeutrEx directory and our repository next to each other in your working folder, i.e
 
 .your/working/folder
+
 ├── NeutrEx                      # Original NeutrEx
+
 ├── neutrex-lite                 # Our repo
 
 In `env` you can find the environments used in our experiment. It is recommended to install all of them with
