@@ -14,6 +14,7 @@ After installing the NeutrEx repo, put the NeutrEx directory and our repository 
 .your/working/folder
 
 ├── NeutrEx                      # Original NeutrEx
+
 ├── neutrex-lite                 # Our repo
 
 In `env` you can find the environments used in our experiment. It is recommended to install all of them with
