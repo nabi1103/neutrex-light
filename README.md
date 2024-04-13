@@ -24,7 +24,7 @@ In `env` you can find the environments used in our experiment. It is recommended
 Check the respective folders for further infos regarding the experiments
 
 <ol>
-    <li><code>utils</code> - benchmarking pipeline for experiments <li>
+    <li><code>utils</code> - benchmarking pipeline for experiments and misc. code</li>
     <li><code>finetune</code> - finetuning experiment</li>
     <li><code>pruning</code> - pruning experiment
 </ol>
