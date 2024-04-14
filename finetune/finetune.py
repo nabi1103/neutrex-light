@@ -12,22 +12,28 @@ import numpy as np
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
+# Link to the training dataset.
 img_dir = "/home/stthnguye/dataset/affectnet/images"
+# Link to the annotation files
 annotations_file = "/home/stthnguye/neutrex-lite/assets/finetune/tensors/csv/ee_labels_affectnet_50000.csv"
+# Link to the precomputed output vector from the original encoder
 precomp_dir = "/home/stthnguye/neutrex-lite/assets/finetune/tensors/affectnet-reduced/"
+# Link to the experiment directory, which contain the encoder to be finetuned.
 experiment_dir = "/home/stthnguye/neutrex-lite/experiment/finetune-ee-0.7-large/"
+# Name for the validation plot
 plot_name = "Finetuning pruned model EE-0.7 with AffectNet"
+# Config for training
 BATCH_SIZE = 64
 EPOCH = 10
+train_size = 30000
 
 dataset = CustomTestData(img_dir, face_detector="fan", max_detection=1, label_path = annotations_file)
 dataset_small = torch.utils.data.Subset(dataset, range(33000))
-
-train_size = 30000
 test_size = len(dataset_small) - train_size
 
 train_set, val_set = torch.utils.data.random_split(dataset_small, [train_size, test_size])
 
+# Check the training for bad images 
 def check_tensor_dim(data):
     for img in data:
         if (img["image"].shape != torch.Size([1,3,224,224])):
@@ -105,6 +111,7 @@ def train(epoch, model, train_data, val_data, plot_name):
         print("Validation score: ", val_score)
         val_scores.append(val_score)
     
+    # Where to save the model
     torch.save(model, experiment_dir + "pruned-finetuned-ee.pth")
     plot_training(val_scores, "Finetuning pruned model EE-0.7")
 
@@ -138,6 +145,6 @@ def plot_training(val_scores, name):
     plt.title(label=name, fontsize=16, color="black")
     plt.savefig(os.path.join(experiment_dir, "validation_score"))
 
-
+# Load the pruned encoder and finetune
 model = torch.load(experiment_dir + "original/pruned-ee.pth")
 finetune_ee(model)
