@@ -331,25 +331,6 @@ class CustomTestData(TestData):
             res["image"] = transform_image_tensor(res)
             return res
 
-
-def video2sequence(video_path):
-    videofolder = video_path.split('.')[0]
-    util.check_mkdir(videofolder)
-    video_name = video_path.split('/')[-1].split('.')[0]
-    vidcap = cv2.VideoCapture(video_path)
-    success,image = vidcap.read()
-    count = 0
-    imagepath_list = []
-    while success:
-        imagepath = '{}/{}_frame{:04d}.jpg'.format(videofolder, video_name, count)
-        cv2.imwrite(imagepath, image)     # save frame as JPEG file
-        success,image = vidcap.read()
-        count += 1
-        imagepath_list.append(imagepath)
-    print('video frames are stored in {}'.format(videofolder))
-    return imagepath_list
-
-
 def transform_image_tensor(img):
     img["image"] = img["image"].cuda()
     if len(img["image"].shape) == 3:
@@ -367,3 +348,21 @@ def transform_image_tensor(img):
     # [B, K, 3, size, size] ==> [BxK, 3, size, size]
     image = image.view(-1, image.shape[-3], image.shape[-2], image.shape[-1])
     return image
+
+
+def video2sequence(video_path):
+    videofolder = video_path.split('.')[0]
+    util.check_mkdir(videofolder)
+    video_name = video_path.split('/')[-1].split('.')[0]
+    vidcap = cv2.VideoCapture(video_path)
+    success,image = vidcap.read()
+    count = 0
+    imagepath_list = []
+    while success:
+        imagepath = '{}/{}_frame{:04d}.jpg'.format(videofolder, video_name, count)
+        cv2.imwrite(imagepath, image)     # save frame as JPEG file
+        success,image = vidcap.read()
+        count += 1
+        imagepath_list.append(imagepath)
+    print('video frames are stored in {}'.format(videofolder))
+    return imagepath_list
