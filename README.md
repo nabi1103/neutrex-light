@@ -1,6 +1,6 @@
-# NeutrEx-Lite: Efficient Expression Neutrality Estimation For Utility Prediction
+# NeutrEx-Light: Efficient Expression Neutrality Estimation For Utility Prediction
 
-This repository contains the implementation of <b>NeutrEx-Lite: Efficient Expression Neutrality Estimation For Utility Prediction</b>. This work is supervised by Prof. Dr. Christoph Busch and Marcel Grimmer, as part of the master thesis by the same name.
+This repository contains the implementation of <b>NeutrEx-Light: Efficient Expression Neutrality Estimation For Utility Prediction</b>. This work is supervised by Prof. Dr. Christoph Busch and Marcel Grimmer, as part of the master thesis by the same name. A shortened version of this work is accepted for the upcoming [BIOSIG 2024](https://biosig.de/) conference
 
 Requirements to run the code in this repo.
 
